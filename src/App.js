@@ -16,8 +16,7 @@ app.use(express.urlencoded({
 
 
 app.get('/',(req,res) => {
-    
-    res.send( new ApiResponse(true , "message" , {data : "data"}))
+    res.send( new ApiResponse(true , "this is home" , {data : "get start"}))
 })
 
 app.use('/user',UserRouter);
