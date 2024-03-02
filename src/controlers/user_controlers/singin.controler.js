@@ -5,13 +5,8 @@ import ApiResponse from "../../utils/ApiResponse.js";
 
     const {name , userid , email , password} = req.body ;
 
-  
-       
         let id_user = await User.findOne({userid});
         let e_user = await User.findOne({email});
-
-    console.log(id_user);
-    console.log(e_user);
 
  if(!id_user && !e_user){
 
