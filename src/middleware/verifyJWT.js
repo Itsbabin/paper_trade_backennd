@@ -14,7 +14,7 @@ async function verifyJwt(req, res, next) {
 
     let isVerified =  jwt.verify(token,process.env.SECRET)
    
-    let user =  await User.findOne({userid : isVerified?.userid})
+    let user =  await User.findOne({_id : isVerified?._id})
 
     if(!user){
         throw new ApiResponse(false, "token is not valid", null);

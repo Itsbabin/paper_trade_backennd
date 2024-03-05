@@ -1,23 +1,23 @@
 import User from "../../models/User.model.js";
 import ApiResponse from "../../utils/ApiResponse.js";
 
-async function updateEmail ( req , res) {
+async function updateUserid ( req , res) {
 
     try {
-    let { email } = req.body ;
+    let { userid } = req.body ;
 
-    let emailExist = await User.findOne({email});
+    let useridExist = await User.findOne({userid});
 
-    if (emailExist) {
-       throw new ApiResponse(false , "email already exist" , null)
+    if (useridExist) {
+       throw new ApiResponse(false , "userid already exist" , null)
     }
     else{
 
     await User.findOneAndUpdate({_id : req.user?._id} ,
-                                { $set: { email } }, 
+                                { $set: { userid } }, 
                                 { new: true })
     .then((response) => {
-        res.status(200).send(new ApiResponse(true , "updated" , {
+        res.status(200).send(new ApiResponse(true , "userid updated !!" , {
             response
         }))
     })
@@ -35,4 +35,4 @@ async function updateEmail ( req , res) {
 
 }
 
-export default updateEmail;
+export default updateUserid ;

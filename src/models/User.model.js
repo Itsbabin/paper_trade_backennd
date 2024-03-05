@@ -40,7 +40,7 @@ UserSchema.pre("save", async function (next) {
 })
 
 UserSchema.methods.genarateToken = function () {
-    const token = jwt.sign({userid : this.userid} , process.env.SECRET ) ;
+    const token = jwt.sign({_id : this._id} , process.env.SECRET ) ;
     return token ;
 }
 
