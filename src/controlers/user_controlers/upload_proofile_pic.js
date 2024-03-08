@@ -5,8 +5,6 @@ import fs from 'fs'
 
 
 export default async function profilePicUpload (req,res) {
-    console.log(req.file);
-
     let result = await uploadMeadia(`uploads/${req.file.filename}`)
     
     fs.unlink(`uploads/${req.file.filename}`,() => {

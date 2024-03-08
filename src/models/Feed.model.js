@@ -17,8 +17,7 @@ const FeedSchema = new mongoose.Schema({
     },
     comments : [{
         com_author : {
-            type : Schema.Types.ObjectId,
-            ref : "User",
+            type : String,
             trim : true,
         },
         com_text : {
