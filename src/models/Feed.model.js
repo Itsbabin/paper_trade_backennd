@@ -12,6 +12,10 @@ const FeedSchema = new mongoose.Schema({
         type : String,
         trim : true,
     },
+    caption : {
+        type : String,
+        trim : true,
+    },
     likes : {
         type : Number,
     },

@@ -7,10 +7,10 @@ import fs from 'fs'
 
 const uploadFeed = async (req , res) => {
 
-    await uploadMeadia(`uploads/${req.file.filename}`)
+    await uploadMeadia(`uploads/${req.file?.filename}`)
     .then(async (result) => {
 
-    fs.unlink(`uploads/${req.file.filename}`,() => {
+    fs.unlink(`uploads/${req.file?.filename}`,() => {
         console.log("file deleted");
     })
 
@@ -18,10 +18,7 @@ const uploadFeed = async (req , res) => {
         author : req.user._id,
         imageURI : result.secure_url ,
         likes : 0,
-        comments : [{
-            com_author : "commenter profile",
-            com_text : "this is comment"
-        }]
+        caption : req.body?.caption 
      })
      .then((response) =>{
          res.status(200).send( new ApiResponse(true , "feed uploaded successfully" , {
