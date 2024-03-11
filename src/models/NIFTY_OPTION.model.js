@@ -1,7 +1,7 @@
 import mongoose from "mongoose";   
 
-const FNOSchema = new mongoose.Schema({
-    FNO : [{
+const NIFTYSchema = new mongoose.Schema({
+    NIFTY_OPTION : [{
         token : {
             type : String,
             trim : true,
@@ -42,6 +42,6 @@ const FNOSchema = new mongoose.Schema({
 });
 
 
-const FNO = mongoose.model('FNO',FNOSchema);
+const NIFTY_OPTION = mongoose.model('NIFTY_OPTION',NIFTYSchema);
 
-export default FNO ; 
+export default NIFTY_OPTION ; 

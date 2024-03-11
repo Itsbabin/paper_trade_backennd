@@ -16,7 +16,7 @@ export default async function profilePicUpload (req,res) {
         { new: true })
         .then((response) => {
             console.log(response);
-            res.status(200).send(new ApiResponse(true , "uploaded succcess fully😊!!" , {
+            res.status(200).send(new ApiResponse(true , "uploaded succcess fully 😊!!" , {
                  response
             }))
         })
