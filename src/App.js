@@ -3,6 +3,7 @@ import cors from 'cors'
 import ApiResponse from './utils/ApiResponse.js';
 import UserRouter from './routes/user.route.js';
 import FeedRouter from './routes/feed.route.js';
+import InstrumentRouter from './routes/tradeInstrument.route.js';
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get('/',(req,res) => {
 
 app.use('/user',UserRouter);
 app.use('/feed',FeedRouter);
+app.use('/trade/instrument',InstrumentRouter);
 
 
 

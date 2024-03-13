@@ -50,42 +50,66 @@ async function SaveAll_Instrument () {
 
 
 try {
-    await NIFTY_OPTION.findOneAndUpdate({_id : "65ef67c97423a952a4d04938"} ,
+    await NIFTY_OPTION.findOneAndUpdate({_id : process.env.NIFTY_OPTION_ID} ,
         {
         NIFTY_OPTION : nifty_option
     }, 
     { new: true })
-    await BANKNIFTY_OPTION.findOneAndUpdate({_id : "65ef67d67423a952a4d04f17"} ,
+    await BANKNIFTY_OPTION.findOneAndUpdate({_id : process.env.BANKNIFTY_OPTION_ID} ,
         {
         BANKNIFTY_OPTION : banknifty_option
     }, 
     { new: true })
-    await FINNIFTY_OPTION.findOneAndUpdate({_id : "65ef67e17423a952a4d054fa"} ,
+    await FINNIFTY_OPTION.findOneAndUpdate({_id : process.env.FINNIFTY_OPTION_ID} ,
         {
         FINNIFTY_OPTION : finnifty_option
     }, 
     { new: true })
-    await MIDCPNIFTY_OPTION.findOneAndUpdate({_id : "65ef67e47423a952a4d05962"} ,
+    await MIDCPNIFTY_OPTION.findOneAndUpdate({_id : process.env.MIDCPNIFTY_OPTION_ID} ,
         {
         MIDCPNIFTY_OPTION : midcap_option
     }, 
     { new: true })
-    await FUTURE_INDEX.findOneAndUpdate({_id : "65ef67e77423a952a4d05e6c"} ,
+    await FUTURE_INDEX.findOneAndUpdate({_id : process.env.FUTURE_INDEX_ID} ,
         {
         FUTURE_INDEX : future_index
     }, 
     { new: true })
-    await FUTURE_STOCK.findOneAndUpdate({_id : "65ef67e77423a952a4d05e7a"} ,
+    await FUTURE_STOCK.findOneAndUpdate({_id : process.env.FUTURE_STOCK_ID} ,
         {
         FUTURE_STOCK : future_stock
-    }, 
-    { new: true })
+    },)
+    // await NIFTY_OPTION.create(
+    //     {
+    //     NIFTY_OPTION : nifty_option
+    // })
+    // await BANKNIFTY_OPTION.create(
+    //     {
+    //     BANKNIFTY_OPTION : banknifty_option
+    // })
+    // await FINNIFTY_OPTION.create(
+    //     {
+    //     FINNIFTY_OPTION : finnifty_option
+    // })
+    // await MIDCPNIFTY_OPTION.create(
+    //     {
+    //     MIDCPNIFTY_OPTION : midcap_option
+    // })
+    // await FUTURE_INDEX.create(
+    //     {
+    //     FUTURE_INDEX : future_index
+    // })
+    // await FUTURE_STOCK.create(
+    //     {
+    //     FUTURE_STOCK : future_stock
+    // })
     .then(() => {
         console.log("instrument update successfully!!");
     })
 
     
 } catch (error) {
+    console.log(error);
       console.log("problem in update instrument");
 }
 

@@ -7,6 +7,7 @@ import SaveAll_Instrument from "./trade_insttrument/save_all_instrument.js";
 dotenv.config();
 
 
+await ConnectToDB(); 
 
 app.listen(PORT , () => {
     console.log(`app is running on ${PORT}`);
@@ -15,7 +16,6 @@ app.listen(PORT , () => {
 
  async function scheduleFunction() {
 
-   await ConnectToDB(); 
                     // after connect with DB the rutine
     var now = new Date();
     var hours = now.getHours();
