@@ -24,6 +24,32 @@ const UserSchema = new mongoose.Schema({
         type : String,
         trim : true,
     },
+    demo_money : {
+        type : Number,
+        trim : true,
+    },
+    oder_book : [{
+        name : {
+            type : String,
+            trim : true ,
+        },
+        buy : {
+            type : Number,
+            trim : true,
+        },
+        buy_date : {
+            type : String,
+            trim : true,
+        },
+        sell : {
+            type : Number,
+            trim : true,
+        },
+        sell_date : {
+            type : String,
+            trim : true,
+        }
+    }],
     password : {
         type : String,
         require : true,
