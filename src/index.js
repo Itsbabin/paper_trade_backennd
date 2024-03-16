@@ -1,4 +1,4 @@
-import { PORT } from "../constant.js";
+import { PORT } from "./constant.js";
 import app from "./App.js";
 import ConnectToDB from "./db/db.connect.js";
 import dotenv from "dotenv";

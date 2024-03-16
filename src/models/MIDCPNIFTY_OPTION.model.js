@@ -39,6 +39,8 @@ const MIDCPNIFTYSchema = new mongoose.Schema({
             trim : true,
         },
     }]
+},{
+    timestamps : true
 });
 
 

@@ -39,6 +39,8 @@ const NIFTYSchema = new mongoose.Schema({
             trim : true,
         },
     }]
+},{
+    timestamps : true
 });
 
 

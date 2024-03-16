@@ -39,6 +39,8 @@ const FUTURE_STOCKSchema = new mongoose.Schema({
             trim : true,
         },
     }]
+},{
+    timestamps : true
 });
 
 

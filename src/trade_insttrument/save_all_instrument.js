@@ -18,34 +18,36 @@ async function SaveAll_Instrument () {
     await axios("https://margincalculator.angelbroking.com/OpenAPI_File/files/OpenAPIScripMaster.json")
     .then(async (response) => {
         response = response.data;
-    for (let index = 0; index < response.length; index++) {
-        const element = response[index];
+    future_stock = response.filter((element) => {
         if (element.exch_seg === "NFO" && element.instrumenttype === "FUTSTK") {
-            future_stock = [...future_stock , element]
-            // future_stock = []
+        return element;
         }
-        else if (element.exch_seg === "NFO" && element.instrumenttype === "FUTIDX") {
-            future_index = [...future_index,element];
-            // future_index = [];
-           }
-        else  if (element.exch_seg === "NFO" && element.instrumenttype === "OPTIDX" && element.name === "NIFTY"){
-            nifty_option = [...nifty_option,element];
-            // nifty_option = [];
+    })
+    future_index = response.filter((element) => {
+         if(element.exch_seg === "NFO" && element.instrumenttype === "FUTIDX"){
+            return element;
         }
-        else if (element.exch_seg === "NFO" && element.instrumenttype === "OPTIDX" && element.name === "MIDCPNIFTY"){
-            midcap_option = [...midcap_option,element];
-            // midcap_option = [];
+    })
+    nifty_option = response.filter((element) => {
+        if (element.exch_seg === "NFO" && element.instrumenttype === "OPTIDX" && element.name === "NIFTY"){
+         return element;
         }
-        else if (element.exch_seg === "NFO" && element.instrumenttype === "OPTIDX" && element.name === "BANKNIFTY"){
-            banknifty_option = [...banknifty_option,element];
-            // banknifty_option = [];
+    })
+    midcap_option = response.filter((element) => {
+        if (element.exch_seg === "NFO" && element.instrumenttype === "OPTIDX" && element.name === "MIDCPNIFTY"){
+            return element;
         }
-        else if (element.exch_seg === "NFO" && element.instrumenttype === "OPTIDX" && element.name === "FINNIFTY"){
-            finnifty_option = [...finnifty_option,element];
-            // finnifty_option = [];
+    })
+    banknifty_option = response.filter((element) => {
+        if (element.exch_seg === "NFO" && element.instrumenttype === "OPTIDX" && element.name === "BANKNIFTY"){
+            return element;
         }
-
-    }
+    })
+    finnifty_option = response.filter((element) => {
+         if (element.exch_seg === "NFO" && element.instrumenttype === "OPTIDX" && element.name === "FINNIFTY"){
+            return element;
+        }
+    })
 })
 
 

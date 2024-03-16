@@ -39,6 +39,8 @@ const FINNIFTYSchema = new mongoose.Schema({
             trim : true,
         },
     }]
+},{
+    timestamps : true
 });
 
 

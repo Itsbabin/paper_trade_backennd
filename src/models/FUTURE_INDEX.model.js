@@ -39,6 +39,8 @@ const FUTURE_INDEXSchema = new mongoose.Schema({
             trim : true,
         },
     }]
+},{
+    timestamps : true
 });
 
 
