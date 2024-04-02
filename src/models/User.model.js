@@ -33,21 +33,20 @@ const UserSchema = new mongoose.Schema({
             type : String,
             trim : true ,
         },
-        buy : {
+        amount : {
             type : Number,
             trim : true,
         },
-        buy_date : {
+        time : {
             type : String,
             trim : true,
         },
-        sell : {
-            type : Number,
+        type : {
+            type : Boolean,
             trim : true,
         },
-        sell_date : {
-            type : String,
-            trim : true,
+        active : {
+            type : Boolean,
         }
     }],
     password : {

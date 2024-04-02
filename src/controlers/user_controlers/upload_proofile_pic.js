@@ -15,7 +15,6 @@ export default async function profilePicUpload (req,res) {
         { $set: { profile_pic_URL : result.secure_url } }, 
         { new: true })
         .then((response) => {
-            console.log(response);
             res.status(200).send(new ApiResponse(true , "uploaded succcess fully 😊!!" , {
                  response
             }))

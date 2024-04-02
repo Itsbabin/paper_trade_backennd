@@ -10,24 +10,27 @@ import ApiResponse from "../../utils/ApiResponse.js";
 
  if(!id_user && !e_user){
 
-    try {
+   
         await User.create({
             name ,
             email ,
             userid ,
-            password 
+            password ,
+            demo_money : 1000000 ,
+            profile_pic_URL : ""
         })
         .then((response) => {
             let token = response.genarateToken()
-            res.status(200).send(new ApiResponse(true , "user signed in successfully" , {
-                response : token
+            res.status(200)
+            .send(new ApiResponse(true , "user signed in successfully" , {
+                token
             }))
         })
-    } catch (error) {
+    .catch( (error) => {
         res.status(400).json(new ApiResponse(false , "some error occoured in time of creating profile" , {
             error 
         }))
-    }
+    })
 
 }
 else if(id_user && e_user){

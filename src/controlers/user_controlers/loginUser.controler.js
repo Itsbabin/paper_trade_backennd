@@ -5,7 +5,6 @@ async function loginUser (req,res) {
       let { userid , password} = req.body ;
     try {
         let user = await User.findOne({userid});
-        console.log(user);
         if(!user){
             user =  await User.findOne({email : userid})
             if (!user) {
@@ -22,7 +21,8 @@ async function loginUser (req,res) {
         }
         else{
         let token = user.genarateToken();
-        res.status(200).send(new ApiResponse(true , "user longed in successfully" , {
+        res.status(200)
+        .send(new ApiResponse(true , "user longed in successfully" , {
             token
         }))
     }
