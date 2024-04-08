@@ -8,12 +8,14 @@ import updatePassword from "../controlers/user_controlers/update_password.js";
 import profilePicUpload from "../controlers/user_controlers/upload_proofile_pic.js";
 import getUser from "../controlers/user_controlers/getUser.controler.js";
 import multer from 'multer';
+import GetOrderbook from "../controlers/user_controlers/getOrderbook.controler.js";
 
 
 const upload = multer({dest : 'uploads/'})
 const router = Router();
 
 router.route('/profile').get(verifyJwt,getUser);
+router.route('/oderbook').get(verifyJwt,GetOrderbook);
 router.route('/singin').post(signinUser);
 router.route('/login').post(loginUser);
 router.route('/update/email').post( verifyJwt ,updateEmail);

@@ -5,10 +5,12 @@ import ApiResponse from "../../utils/ApiResponse.js";
 
 async function FinniftyOption (req , res) {
      try {
+        let {page} = req.body
+        page = page*50 ;
         await FINNIFTY_OPTION.findById(process.env.FINNIFTY_OPTION_ID)
         .then((response) => {
             res.status(200).send(new ApiResponse(true , "successfully fetched" , {
-                response
+                FINNIFTY_OPTION : response.FINNIFTY_OPTION.slice(page ,(page+50))
                }))
         })
         .catch(() => {

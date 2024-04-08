@@ -5,14 +5,15 @@ import ApiResponse from '../../utils/ApiResponse.js'
 
 async function Sell (req , res) {
         let newAmount ;
-        let { amount , time , OderId , name} = req.body ;
+        let { exit_amount , time , OderId } = req.body ;
         
-        newAmount = (req.user.demo_money + amount) ;
+        newAmount = (req.user.demo_money + exit_amount) ;
 
         let sellableMal = req.user.oder_book.map((element) => {
             if (element._id.toHexString() === OderId) {
                 element.active = false;
-                
+                element.exit_amount = exit_amount ;
+                element.exit_time = time
                  return element ;
                 }
                 else return element ;
@@ -21,13 +22,7 @@ async function Sell (req , res) {
         await User.findOneAndUpdate({_id : req.user._id} ,
                 {
                  demo_money : newAmount ,
-                 oder_book : [...sellableMal , {
-                        name ,
-                        amount ,
-                        time ,
-                        type : false,  
-                        active :false ,      
-                 }]
+                 oder_book : [...sellableMal]
             }, 
             { new: true })
         .then((response) => {

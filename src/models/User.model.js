@@ -37,12 +37,16 @@ const UserSchema = new mongoose.Schema({
             type : Number,
             trim : true,
         },
+        exit_amount : {
+            type : Number,
+            trim : true,
+        },
         time : {
             type : String,
             trim : true,
         },
-        type : {
-            type : Boolean,
+        exit_time : {
+            type : String,
             trim : true,
         },
         active : {

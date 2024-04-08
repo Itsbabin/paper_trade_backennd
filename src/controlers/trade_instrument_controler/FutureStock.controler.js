@@ -5,10 +5,12 @@ import ApiResponse from "../../utils/ApiResponse.js";
 
 async function FutureStock (req , res) {
      try {
+        let {page} = req.body
+        page = page*50 ;
         await FUTURE_STOCK.findById(process.env.FUTURE_STOCK_ID)
         .then((response) => {
             res.status(200).send(new ApiResponse(true , "successfully fetched" , {
-                response
+                FUTURE_STOCK : response.FUTURE_INDEX.slice(page ,(page+50))
                }))
         })
         .catch(() => {

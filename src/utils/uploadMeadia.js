@@ -11,7 +11,7 @@ async function uploadMeadia (localpath) {
         const result = await cloudinary.uploader.upload(localpath, {
             resource_type: "auto"
         });
-
+        console.log(result);
        return result;
 
       } catch (error) {

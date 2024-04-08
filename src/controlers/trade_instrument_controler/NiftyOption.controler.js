@@ -3,12 +3,13 @@ import ApiResponse from "../../utils/ApiResponse.js"
 
 
     async function NiftyOption (req , res) {
-
+        let {page} = req.body
+        page = page*50 ;
         try {
            await NIFTY_OPTION.findById(process.env.NIFTY_OPTION_ID)
            .then((response) => {
                res.status(200).send(new ApiResponse(true , "successfully fetched" , {
-                response
+                NIFTY_OPTION : response.NIFTY_OPTION.slice(page ,(page+50))
                }))
            })
            .catch(() => {

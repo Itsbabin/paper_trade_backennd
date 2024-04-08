@@ -5,10 +5,12 @@ import ApiResponse from "../../utils/ApiResponse.js";
 
 async function MidcapniftyOption (req , res) {
      try {
+        let {page} = req.body
+        page = page*50 ;
         await MIDCPNIFTY_OPTION.findById(process.env.MIDCPNIFTY_OPTION_ID)
         .then((response) => {
             res.status(200).send(new ApiResponse(true , "successfully fetched" , {
-                response
+                MIDCPNIFTY_OPTION : response.MIDCPNIFTY_OPTION.slice(page ,(page+50))
                }))
         })
         .catch(() => {
