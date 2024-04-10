@@ -3,6 +3,7 @@ import ApiResponse from "../../utils/ApiResponse.js";
 
 async function loginUser (req,res) {
       let { userid , password} = req.body ;
+      console.log(req.body);
     try {
         let user = await User.findOne({userid});
         if(!user){

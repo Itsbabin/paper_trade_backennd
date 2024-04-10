@@ -10,13 +10,15 @@ async function FutureStock (req , res) {
         await FUTURE_STOCK.findById(process.env.FUTURE_STOCK_ID)
         .then((response) => {
             res.status(200).send(new ApiResponse(true , "successfully fetched" , {
-                FUTURE_STOCK : response.FUTURE_INDEX.slice(page ,(page+50))
-               }))
+                FUTURE_STOCK : response.FUTURE_STOCK.slice(page ,(page+50)) 
+                           }))
         })
-        .catch(() => {
+        .catch((err) => {
             res.status(400).send(new ApiResponse(true , "error occoured in DB conection" , null))
+            console.log(err);
         })
     } catch (error) {
+        console.log(error);
          res.status(400).send(new ApiResponse(true , "error occoured in DB conection" , null))
      }
 }

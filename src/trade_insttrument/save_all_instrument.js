@@ -5,6 +5,7 @@ import MIDCPNIFTY_OPTION from "../models/MIDCPNIFTY_OPTION.model.js";
 import FUTURE_INDEX from "../models/FUTURE_INDEX.model.js";
 import FUTURE_STOCK from "../models/FUTURE_STOCK.model.js";
 import FINNIFTY_OPTION from "../models/FINNIFTY_OPTION.model.js";
+import All_Stock from "../models/All_Stocks.model.js";
 
 async function SaveAll_Instrument () {
 
@@ -14,10 +15,16 @@ async function SaveAll_Instrument () {
     let midcap_option = [] ;
     let banknifty_option = [] ;
     let finnifty_option = [] ;
+    let all_stock = [] ;
 
     await axios("https://margincalculator.angelbroking.com/OpenAPI_File/files/OpenAPIScripMaster.json")
     .then(async (response) => {
         response = response.data;
+    all_stock = response.filter((element) => {
+        if (element.exch_seg === "NSE" && element.instrumenttype === "") {
+        return element;
+        }
+    })
     future_stock = response.filter((element) => {
         if (element.exch_seg === "NFO" && element.instrumenttype === "FUTSTK") {
         return element;
@@ -52,6 +59,11 @@ async function SaveAll_Instrument () {
 
 
 try {
+    await All_Stock.findOneAndUpdate({_id : process.env.All_STOCK_ID} ,
+        {
+          All_Stock : all_stock
+    }, 
+    { new: true })
     await NIFTY_OPTION.findOneAndUpdate({_id : process.env.NIFTY_OPTION_ID} ,
         {
         NIFTY_OPTION : nifty_option
@@ -80,7 +92,11 @@ try {
     await FUTURE_STOCK.findOneAndUpdate({_id : process.env.FUTURE_STOCK_ID} ,
         {
         FUTURE_STOCK : future_stock
-    },)
+    },) 
+    // await All_Stock.create(
+    //     {
+    //     All_Stock : all_stock
+    // })
     // await NIFTY_OPTION.create(
     //     {
     //     NIFTY_OPTION : nifty_option

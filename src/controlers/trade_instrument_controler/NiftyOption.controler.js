@@ -9,7 +9,7 @@ import ApiResponse from "../../utils/ApiResponse.js"
            await NIFTY_OPTION.findById(process.env.NIFTY_OPTION_ID)
            .then((response) => {
                res.status(200).send(new ApiResponse(true , "successfully fetched" , {
-                NIFTY_OPTION : response.NIFTY_OPTION.slice(page ,(page+50))
+                NIFTY_OPTION : response.NIFTY_OPTION.slice(page ,(page+50)) 
                }))
            })
            .catch(() => {
