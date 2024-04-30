@@ -6,10 +6,10 @@ import ApiResponse from "../../utils/ApiResponse.js"
         let {page} = req.body
         page = page*50 ;
         try {
-           await NIFTY_OPTION.findById(process.env.NIFTY_OPTION_ID)
+           await NIFTY_OPTION.find().sort({$natural:-1}).skip(page).limit(page+50)
            .then((response) => {
                res.status(200).send(new ApiResponse(true , "successfully fetched" , {
-                NIFTY_OPTION : response.NIFTY_OPTION.slice(page ,(page+50)) 
+                NIFTY_OPTION : response
                }))
            })
            .catch(() => {

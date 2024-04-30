@@ -1,7 +1,6 @@
 import mongoose from "mongoose";   
 
 const NIFTYSchema = new mongoose.Schema({
-    NIFTY_OPTION : [{
         token : {
             type : String,
             trim : true,
@@ -37,8 +36,7 @@ const NIFTYSchema = new mongoose.Schema({
         tick_size : {
             type : String,
             trim : true,
-        },
-    }]
+        }
 },{
     timestamps : true
 });

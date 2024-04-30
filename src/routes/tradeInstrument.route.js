@@ -5,7 +5,7 @@ import FinniftyOption from "../controlers/trade_instrument_controler/FinniftyOpt
 import MidcapniftyOption from "../controlers/trade_instrument_controler/MidcapniftyOption.controler.js";
 import FutureIndex from "../controlers/trade_instrument_controler/FutureIndex.controler.js";
 import FutureStock from "../controlers/trade_instrument_controler/FutureStock.controler.js";
-import AllStock from "../controlers/trade_instrument_controler/All_Stocks.controler.js";
+import SearchInstrument from "../controlers/trade_instrument_controler/SearchInstrument.controler.js";
 
 let router = Router();
 
@@ -15,7 +15,7 @@ router.route("/finnifty_option").post(FinniftyOption)
 router.route("/midcapnifty_option").post(MidcapniftyOption)
 router.route("/future_index").post(FutureIndex)
 router.route("/future_stock").post(FutureStock)
-router.route("/all_stocks").post(AllStock)
+router.route("/search").post(SearchInstrument)
 
 
 export default router ;

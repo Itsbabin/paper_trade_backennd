@@ -7,10 +7,10 @@ async function FutureStock (req , res) {
      try {
         let {page} = req.body
         page = page*50 ;
-        await FUTURE_STOCK.findById(process.env.FUTURE_STOCK_ID)
+        await FUTURE_STOCK.find().sort({$natural:-1}).skip(page).limit(page+50)
         .then((response) => {
             res.status(200).send(new ApiResponse(true , "successfully fetched" , {
-                FUTURE_STOCK : response.FUTURE_STOCK.slice(page ,(page+50)) 
+                FUTURE_STOCK : response
                            }))
         })
         .catch((err) => {

@@ -1,7 +1,6 @@
 import mongoose from "mongoose";   
 
 const FUTURE_INDEXSchema = new mongoose.Schema({
-    FUTURE_INDEX : [{
         token : {
             type : String,
             trim : true,
@@ -37,8 +36,7 @@ const FUTURE_INDEXSchema = new mongoose.Schema({
         tick_size : {
             type : String,
             trim : true,
-        },
-    }]
+        }
 },{
     timestamps : true
 });

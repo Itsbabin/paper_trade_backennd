@@ -7,10 +7,10 @@ async function FinniftyOption (req , res) {
      try {
         let {page} = req.body
         page = page*50 ;
-        await FINNIFTY_OPTION.findById(process.env.FINNIFTY_OPTION_ID)
+        await FINNIFTY_OPTION.find().sort({$natural:-1}).skip(page).limit(page+50)
         .then((response) => {
             res.status(200).send(new ApiResponse(true , "successfully fetched" , {
-                FINNIFTY_OPTION : response.FINNIFTY_OPTION.slice(page ,(page+50))
+                FINNIFTY_OPTION : response
                }))
         })
         .catch(() => {

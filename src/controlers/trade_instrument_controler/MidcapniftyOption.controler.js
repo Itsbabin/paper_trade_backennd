@@ -7,10 +7,10 @@ async function MidcapniftyOption (req , res) {
      try {
         let {page} = req.body
         page = page*50 ;
-        await MIDCPNIFTY_OPTION.findById(process.env.MIDCPNIFTY_OPTION_ID)
+        await MIDCPNIFTY_OPTION.find().sort({$natural:-1}).skip(page).limit(page+50)
         .then((response) => {
             res.status(200).send(new ApiResponse(true , "successfully fetched" , {
-                MIDCPNIFTY_OPTION : response.MIDCPNIFTY_OPTION.slice(page ,(page+50))
+                MIDCPNIFTY_OPTION : response.find().sort({$natural:-1}).limit(page+50)
                }))
         })
         .catch(() => {

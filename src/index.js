@@ -30,4 +30,4 @@ app.listen(PORT , () => {
 }
 
 // Start scheduling the function
-scheduleFunction();
+// scheduleFunction();

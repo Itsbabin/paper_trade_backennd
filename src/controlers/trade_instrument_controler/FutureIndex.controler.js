@@ -7,10 +7,10 @@ async function FutureIndex (req , res) {
      try {
         let {page} = req.body
         page = page*50 ;
-        await FUTURE_INDEX.findById(process.env.FUTURE_INDEX_ID)
+        await FUTURE_INDEX.find().sort({$natural:-1}).skip(page).limit(page+50)
         .then((response) => {
             res.status(200).send(new ApiResponse(true , "successfully fetched" , {
-                FUTURE_INDEX : response.FUTURE_INDEX.slice(page ,(page+50))
+                FUTURE_INDEX : response
                }))
         })
         .catch(() => {
