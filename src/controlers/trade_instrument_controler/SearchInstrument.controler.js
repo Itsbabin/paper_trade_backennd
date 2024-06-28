@@ -1,11 +1,10 @@
-// import All_Stock from "../../models/All_Stocks.model.js";
+import All_Stocks from "../../models/All_Stocks.model.js";
 import ApiResponse from "../../utils/ApiResponse.js";
 
 
 
 export default async function SearchInstrument(req, res) {
-    let stocks
-    await All_Stock.find( { "name": { "$regex": req.body.query , "$options": "i" } })
+    await All_Stocks.find( { "name": { "$regex": req.body.query , "$options": "i" } })
         .then((response) => {
             // stocks = response[0].All_Stock
             // let searchString = 

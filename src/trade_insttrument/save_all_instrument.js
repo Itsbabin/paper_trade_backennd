@@ -5,6 +5,7 @@ import MIDCPNIFTY_OPTION from "../models/MIDCPNIFTY_OPTION.model.js";
 import FUTURE_INDEX from "../models/FUTURE_INDEX.model.js";
 import FUTURE_STOCK from "../models/FUTURE_STOCK.model.js";
 import FINNIFTY_OPTION from "../models/FINNIFTY_OPTION.model.js";
+import All_Stocks from "../models/All_Stocks.model.js";
 
 async function SaveAll_Instrument () {
 
@@ -70,6 +71,8 @@ try {
     await FUTURE_INDEX.insertMany(future_index) 
     await FUTURE_STOCK.deleteMany() 
     await FUTURE_STOCK.insertMany(future_stock) 
+    await All_Stocks.deleteMany() 
+    await All_Stocks.insertMany(all_stock) 
     .then(() => {
         console.log("instrument update successfully!!");
     })
