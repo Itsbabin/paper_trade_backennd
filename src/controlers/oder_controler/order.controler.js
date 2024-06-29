@@ -27,7 +27,7 @@ async function Order (req , res) {
                 }))
         })
         .catch((err) => {
-                res.status(400).send(new ApiResponse(false , "oder exicute successfully" , {
+                res.status(400).send(new ApiResponse(false , "error in updating oderbook" , {
                         err
                 }))
         })

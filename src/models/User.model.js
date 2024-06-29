@@ -53,6 +53,25 @@ const UserSchema = new mongoose.Schema({
             type : Boolean,
         }
     }],
+    watch_list : [{
+        token : {
+            type : String,
+            trim : true,
+        },
+        symbol : {
+            type : String,
+            trim : true,
+        },
+        name : {
+            type : String,
+            trim : true,
+        },
+        exch_seg : {
+            type : String,
+            trim : true,
+        }
+    }
+    ],
     password : {
         type : String,
         require : true,

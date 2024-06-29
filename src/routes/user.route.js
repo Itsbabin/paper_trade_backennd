@@ -5,19 +5,23 @@ import updateEmail from "../controlers/user_controlers/update_email.js";
 import updateUserid from "../controlers/user_controlers/update_userid.js";
 import verifyJwt from "../middleware/verifyJWT.js";
 import updatePassword from "../controlers/user_controlers/update_password.js";
-import profilePicUpload from "../controlers/user_controlers/upload_proofile_pic.js";
+import profilePicUpload from "../controlers/user_controlers/upload_profile_pic.js";
 import getUser from "../controlers/user_controlers/getUser.controler.js";
-import multer from 'multer';
 import GetOrderbook from "../controlers/user_controlers/getOrderbook.controler.js";
+import GetWatchlist from "../controlers/user_controlers/getOrderbook.controler.js";
+import UpdateWatchlist from "../controlers/user_controlers/updateWatchlist.controler.js";
+import multer from 'multer';
 
 
 const upload = multer({dest : 'uploads/'})
 const router = Router();
 
-router.route('/profile').get(verifyJwt,getUser);
-router.route('/oderbook').get(verifyJwt,GetOrderbook);
 router.route('/singin').post(signinUser);
 router.route('/login').post(loginUser);
+router.route('/profile').get(verifyJwt,getUser);
+router.route('/oderbook').get(verifyJwt,GetOrderbook);
+router.route('/watchlist').get(verifyJwt,GetWatchlist);
+router.route('/update/watchlist').post(verifyJwt,UpdateWatchlist);
 router.route('/update/email').post( verifyJwt ,updateEmail);
 router.route('/update/userid').post( verifyJwt , updateUserid);
 router.route('/update/password').post( verifyJwt , updatePassword);
