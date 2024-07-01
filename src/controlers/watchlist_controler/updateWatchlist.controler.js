@@ -1,5 +1,5 @@
 import User from "../../models/User.model.js";
-import ApiResponse from '../../utils/ApiResponse.js'
+import ApiResponse from "../../utils/ApiResponse.js";
 
 
 async function UpdateWatchlist (req , res) {
@@ -12,8 +12,8 @@ async function UpdateWatchlist (req , res) {
                         symbol,
                         token,
                         exch_seg   
-                 }]
-            }, 
+                 }] 
+            },  
             { new: true })
         .then((response) => {
 
